@@ -20,14 +20,11 @@ import Twilio
 import Twilio.Messages
 
 type MyAPI = "api" :> "hello" :> Get '[JSON] String
-  :<|> "api" :> "sms" :> ReqBody '[JSON] Text :> Post '[JSON] ()
+  :<|> "api" :> "sms" :> ReqBody '[JSON] PostMessage :> Post '[JSON] ()
 
 instance FromJSON PostMessage where
   parseJSON = withObject "Post Message" $ \o -> do
-    toNum <- o .: "to"
-    fromNum <- o .: "from"
-    body <- o .: "body"
-    return $ PostMessage toNum fromNum body
+    return $ PostMessage "" "" ""
 
 myAPI :: Proxy MyAPI
 myAPI = Proxy :: Proxy MyAPI
@@ -35,7 +32,7 @@ myAPI = Proxy :: Proxy MyAPI
 helloHandler :: Twilio String
 helloHandler = return "Hello World!"
 
-smsHandler :: Text -> Twilio ()
+smsHandler :: PostMessage -> Twilio ()
 smsHandler msg = liftIO $ print msg
   {-print (sendTo msg)
   print (sendFrom msg)
