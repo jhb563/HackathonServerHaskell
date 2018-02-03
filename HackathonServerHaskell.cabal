@@ -30,6 +30,9 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , servant
+    , servant-server
+    , warp
   exposed-modules:
       Lib
   other-modules:
