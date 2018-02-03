@@ -1,0 +1,49 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: bd55c1845635dae98fe91e5fc7908642132248f438b424d997490dee6baa305e
+
+name:           HackathonServerHaskell
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/githubuser/HackathonServerHaskell#readme>
+homepage:       https://github.com/githubuser/HackathonServerHaskell#readme
+bug-reports:    https://github.com/githubuser/HackathonServerHaskell/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/HackathonServerHaskell
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_HackathonServerHaskell
+  default-language: Haskell2010
+
+executable server
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HackathonServerHaskell
+    , base >=4.7 && <5
+  other-modules:
+      Paths_HackathonServerHaskell
+  default-language: Haskell2010
